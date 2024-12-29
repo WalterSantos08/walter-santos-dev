@@ -13,11 +13,10 @@ exports.handler = async (event, context) => {
     if (!nome || !email || !mensagem) {
         return {
             statusCode: 400,
-            body: 'Por favor, preencha todos os campos obrigatórios.',
+            body: 'Preencha todos os campos obrigatórios.',
         };
     }
 
-    // Configuração do transporte para envio de e-mails (usando Gmail como exemplo)
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -29,7 +28,7 @@ exports.handler = async (event, context) => {
     const mailOptions = {
         from: 'SEU_EMAIL@gmail.com',
         to: 'waltersantosfilho94@gmail.com',
-        subject: `Contato do site: ${nome}`,
+        subject: `Contato: ${nome}`,
         text: `Nome: ${nome}\nE-mail: ${email}\nCelular: ${celular || 'Não informado'}\nMensagem: ${mensagem}`,
     };
 
