@@ -46,7 +46,7 @@
 
     <main>
         
-                <section class="formulario">
+        <section class="formulario">
             <div class="interface">
                 <h2 class="titulo">FALA <span>COMIGO.</span></h2>
 
@@ -64,6 +64,7 @@
 
             </div><!--interface-->
         </section><!--formulario-->
+
     </main>
 
     <footer>
@@ -89,6 +90,45 @@
             </div><!--line-footer-->
         </div><!--interface-->
     </footer>
+
+    <!-- Script para enviar os dados do formulário -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async function (event) {
+            event.preventDefault(); // Evita o recarregamento da página
+
+            const responseMessage = document.getElementById('responseMessage');
+            responseMessage.style.display = 'none';
+
+            const formData = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                celular: document.getElementById('celular').value,
+                mensagem: document.getElementById('mensagem').value,
+            };
+
+            try {
+                const response = await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                if (response.ok) {
+                    responseMessage.style.display = 'block';
+                    responseMessage.textContent = 'E-mail enviado com sucesso!';
+                    responseMessage.style.color = 'green';
+                } else {
+                    throw new Error('Erro ao enviar o e-mail.');
+                }
+            } catch (error) {
+                responseMessage.style.display = 'block';
+                responseMessage.textContent = error.message;
+                responseMessage.style.color = 'red';
+            }
+        });
+    </script>
 
 </body>
 </html>
