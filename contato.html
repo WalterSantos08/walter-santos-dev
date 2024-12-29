@@ -46,22 +46,24 @@
 
     <main>
         
-        <section class="formulario">
+                <section class="formulario">
             <div class="interface">
                 <h2 class="titulo">FALA <span>COMIGO.</span></h2>
 
-                <form method="post" action="envia.php">
-                    <input type="text" name="nome" id="" placeholder="Seu nome completo" required>
-                    <input type="text" name="email" id="" placeholder="Seu E-mail" required>
-                    <input type="text" name="celular" id="" placeholder="Seu celular">
-                    <textarea name="" id="" placeholder="Sua mensagem" required></textarea>
+                <!-- Formulário atualizado para uso com JavaScript -->
+                <form id="contactForm">
+                    <input type="text" name="nome" id="nome" placeholder="Seu nome completo" required>
+                    <input type="email" name="email" id="email" placeholder="Seu E-mail" required>
+                    <input type="text" name="celular" id="celular" placeholder="Seu celular">
+                    <textarea name="mensagem" id="mensagem" placeholder="Sua mensagem" required></textarea>
                     <div class="btn-enviar"><input type="submit" value="ENVIAR"></div>
-
                 </form>
+
+                <!-- Mensagem de sucesso ou erro -->
+                <p id="responseMessage" style="display:none;"></p>
 
             </div><!--interface-->
         </section><!--formulario-->
-
     </main>
 
     <footer>
