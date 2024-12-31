@@ -161,15 +161,24 @@
 
         <section class="formulario">
             <div class="interface">
-                <h2 class="titulo">FALA <span>COMIGO</span></h2>
+                <h2 class="titulo">FALA <span>COMIGO.</span></h2>
 
-                <form method="post" action="envia.php">
-                    <input type="text" name="nome" id="" placeholder="Seu nome completo" required>
-                    <input type="text" name="email" id="" placeholder="Seu E-mail" required>
-                    <input type="text" name="celular" id="" placeholder="Seu celular">
-                    <textarea name="" id="" placeholder="Sua mensagem" required></textarea>
-                    <div class="btn-enviar"><input type="submit" value="ENVIAR"></div>
+                <form name="contact" method="POST" netlify>
+                    <input type="text" name="nome" placeholder="Seu nome completo" required>
+                    <input type="email" name="email" placeholder="Seu E-mail" required>
+                    <input type="text" name="celular" placeholder="Seu celular">
+                    <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
 
+                    <!-- Honeypot: Campo oculto que bots costumam preencher -->
+                    <p class="hidden">
+                        <label>Não preencha este campo:
+                            <input name="bot-field" />
+                        </label>
+                    </p>
+
+                    <div class="btn-enviar">
+                        <input type="submit" value="ENVIAR">
+                    </div>
                 </form>
 
             </div><!--interface-->
